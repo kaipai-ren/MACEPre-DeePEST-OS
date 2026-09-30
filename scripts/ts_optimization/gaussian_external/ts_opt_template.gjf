@@ -1,0 +1,17 @@
+%nprocshared=1
+%mem=8GB
+%chk=ts_opt.chk
+# external='python /absolute/path/to/Gauoptimizer-MLPs-interface/mlpint_local.py' opt=(ts,calcfc,nomicro,maxcycle=1000)
+
+MACEpre-DeePEST-OS Gaussian external TS optimization
+
+0 1
+REPLACE_WITH_CARTESIAN_COORDINATES
+
+--Link1--
+%nprocshared=1
+%mem=8GB
+%chk=ts_opt.chk
+%nosave
+# freq external='python /absolute/path/to/Gauoptimizer-MLPs-interface/mlpint_local.py' geom=allcheck
+

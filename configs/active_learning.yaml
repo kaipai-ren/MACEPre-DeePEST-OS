@@ -1,0 +1,92 @@
+run:
+  root: ./active_learning_runs
+
+committee:
+  size: 4
+  devices: "0,1,2,3"
+  gpus_per_model: 1
+  max_workers: 4
+  strict_device_split: true
+
+training:
+  train_name_prefix: DORTS-9k
+  num_workers: 4
+  batch_size: 256
+  valid_batch_size: 512
+  eval_interval: 5
+  enable_cueq: true
+  validate_train_xyz: true
+  clean_train_xyz: true
+  clean_suffix: "_clean"
+  exclude_mol_name_regexes:
+    - "_atom\\d+$"
+  final_model_keywords: [stagetwo, swa]
+  require_final_model: true
+  model:
+    model: MACE
+    E0s: average
+    correlation: 3
+    num_interactions: 2
+    r_max: 5.0
+    num_channels: 256
+    max_L: 2
+    default_dtype: float32
+    device: cuda
+    distributed: false
+    valid_fraction: 0.1
+    energy_key: energy
+    forces_key: forces
+    energy_weight: 5
+    forces_weight: 100
+    loss: weighted
+    error_table: TotalMAE
+    optimizer: adamw
+    lr: 0.001
+    max_num_epochs: 200
+    patience: 80
+    ema: true
+    ema_decay: 0.99
+    swa: true
+    start_swa: 150
+    restart_latest: true
+
+qbc:
+  shard_dirs: [./xyz_shards]
+  shard_pattern: "candidate_*.xyz"
+  device_ids: "cuda:0,cuda:1,cuda:2,cuda:3"
+  workers_per_device: 1
+  batch_size: 128
+  chunk_size: 1024
+  default_dtype: float32
+  enable_cueq: false
+  require_cueq: false
+  prediction_subdir: qbc_eval_scores
+  prediction_file_prefix: full
+  compress_score_cache: false
+  fail_fast: true
+  log_dir: qbc_eval_log
+  top_report_limit: 100000
+  copy_original_if_available: false
+  exclude_selected_history: true
+
+selection:
+  low_percentile: 75.0
+  high_percentile: 99.0
+  top_count: 50000
+  extreme_random_count: 500
+  random_seed: null
+
+convergence:
+  p50_plateau_frac: 0.05
+  p90_plateau_frac: 0.05
+  patience: 3
+
+reproducibility:
+  paper_committee_seeds:
+    gen001: [6967, 7767, 7410, 2557]
+    gen002: [9102, 6021, 7254, 4586]
+    gen003: [2242, 4636, 4451, 6706]
+    gen004: [8118, 2479, 7637, 3199]
+    gen005: [3972, 9762, 4404, 3732]
+    gen006: [8073, 405, 350, 2961]
+    gen007: [557, 8678, 6638, 2467]

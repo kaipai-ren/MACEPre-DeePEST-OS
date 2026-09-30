@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
+
+# Local calculation outputs
+/active_learning_runs/
+/inputs/
+/outputs/
+
+# Large artifacts distributed through Zenodo
+/pretrained_models/*.model
+/data/*.xyz

@@ -1,0 +1,40 @@
+# Active-learning baseline model trained from scratch.
+# Paper training configuration.
+
+E0s: average
+batch_size: 80
+checkpoints_dir: ./models
+correlation: 3
+default_dtype: float32
+device: cuda
+ema: true
+ema_decay: 0.99
+enable_cueq: true
+energy_key: energy
+energy_weight: 100
+error_table: TotalMAE
+eval_interval: 2
+forces_key: forces
+forces_weight: 100
+log_dir: ./logs
+loss: weighted
+lr: 1e-3
+max_L: 2
+max_num_epochs: 400
+model: MACE
+model_dir: ./models
+name: Active-learning
+num_channels: 256
+num_interactions: 2
+optimizer: adamw
+patience: 10
+r_max: 6
+results_dir: ./models
+seed: 3
+start_swa: 250
+swa: true
+train_file: ./qbc-35w.xyz
+valid_fraction: 0.05
+distributed: true
+restart_latest: true
+launcher: torchrun

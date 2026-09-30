@@ -1,0 +1,39 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite the ChemRxiv preprint below."
+title: "MACEPre-DeePEST-OS"
+type: software
+license: MIT
+authors:
+  - family-names: Ren
+    given-names: Kaipai
+    orcid: "https://orcid.org/0009-0004-6559-4054"
+  - family-names: Zhao
+    given-names: Yujing
+  - family-names: Tang
+    given-names: Kun
+  - family-names: Wang
+    given-names: Juntao
+  - family-names: Zhang
+    given-names: Guangran
+  - family-names: Liu
+    given-names: Qilei
+preferred-citation:
+  type: article
+  title: "Data-Efficient Machine Learning Potentials for Organic Reactions through Active-Learning-Guided Fine-Tuning"
+  authors:
+    - family-names: Ren
+      given-names: Kaipai
+      orcid: "https://orcid.org/0009-0004-6559-4054"
+    - family-names: Zhao
+      given-names: Yujing
+    - family-names: Tang
+      given-names: Kun
+    - family-names: Wang
+      given-names: Juntao
+    - family-names: Zhang
+      given-names: Guangran
+    - family-names: Liu
+      given-names: Qilei
+  doi: "10.26434/chemrxiv.15009333/v1"
+  journal: "ChemRxiv"
+  year: 2026
